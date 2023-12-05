@@ -1,11 +1,12 @@
 const jwt = require("jsonwebtoken")
+require('dotenv').config()
 
 async function verifyToken(req,res,next){
     const token=req.cookies.token
     if(!token){
         return res.json({status:false})
     }
-    jwt.verify(token,"hello",async(err,data)=>{
+    jwt.verify(token,process.env.SECRET_KEY,async(err,data)=>{
         if(err){
             return res.json({status:false})
         }else{

@@ -1,6 +1,7 @@
 const User=require("../model/user.model")
 const bcrypt=require('bcrypt')
 const jwt=require('jsonwebtoken')
+require('dotenv').config()
 
 async function signUp(req,res){
     try{
@@ -36,7 +37,7 @@ async function signIn(req,res){
         return res.status(401).json({message:"Invalid Username and password"})
     }
 
-    const token=await jwt.sign({id:user._id},"hello",{expiresIn:"1h"})
+    const token=await jwt.sign({id:user._id},process.env.SECRET_KEY,{expiresIn:"1h"})
 
     res.cookie("token",token,{
         expires:new Date(Date.now() + (10 * 60 * 1000)),

@@ -2,8 +2,7 @@ const express= require('express')
 const mongoose=require('mongoose')
 const cookieParser=require('cookie-parser')
 const cors=require('cors')
-
-
+require('dotenv').config()
 
 const app=express()
 
@@ -18,8 +17,8 @@ app.use(express.json())
 require('./routes/auth.routes')(app)
 require('./routes/candidate.routes')(app)
 
-mongoose.connect('mongodb+srv://sharad:sharad@cluster0.tpbktth.mongodb.net/').then(()=>{
+mongoose.connect(process.env.MONGOURL).then(()=>{
     console.log("Connected to db")
 }).catch((err)=>{console.log(err)})
 
-app.listen(5555,()=>{console.log("server runnning on http://localhost:5555")})
+app.listen(process.env.PORT,()=>{console.log(`server runnning on http://localhost:${process.env.PORT}`)})

@@ -88,7 +88,7 @@ const Voting = ()=>{
         
         
             <div className='v-msg'>{mesg}</div>
-            <button onClick={Logout}>LOGOUT</button>
+            <button className="v-logout" onClick={Logout}>LOGOUT</button>
         </div>
         </>
     );
