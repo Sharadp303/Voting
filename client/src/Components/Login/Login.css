@@ -1,0 +1,26 @@
+.log{
+    /* background-color: red; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 100px;
+}
+.log-input{
+    display: flex;
+    flex-direction: column;
+}
+.log-input>input{
+    padding: 15px;
+    margin:5px;
+}
+.log-btn{
+    margin-top: 50px;
+}
+.lbtn{
+    padding: 15px;
+    margin: 15px;
+}
+.error-message{
+    color:red
+}
