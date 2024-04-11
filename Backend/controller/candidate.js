@@ -33,6 +33,14 @@ async function getC(req,res){
     }
 }
 
+async function getCanVotes(req,res){
+    const cName=req.params.canName;
+    console.log(cName)
+
+    const result=await Candidate.findOne({candidateName:cName})
+    res.status(200).json(result)
+}
+
 async function delC(req,res){
     const {candidateName}=req.body
 
@@ -63,4 +71,6 @@ async function voteC(req,res){
         console.log(err)
     }
 }
-module.exports={addC,delC,getC,voteC}
+
+
+module.exports={addC,delC,getC,voteC,getCanVotes}

@@ -28,6 +28,7 @@ const Register=()=>{
 
     return (
         <>
+        {<p className='error-message'>{err}</p>}
         <form onSubmit={handleRegister}>
 
         <div className="reg">
@@ -44,7 +45,6 @@ const Register=()=>{
             <button className="rbtn">Login</button>
             </Link>
          </div>
-         {<p className='error-message'>{err}</p>}
         </div>
 
         </form>

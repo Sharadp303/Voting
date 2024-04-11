@@ -33,14 +33,14 @@ const Login=()=>{
         <>
         <form onSubmit={handleLogin}>
 
+        
         <div className="log">
-            <h1>SignIN</h1>
+        {<p className='error-message'>{err}</p>}
+            <h1>Signin</h1>
          <div className="log-input">           
             <input type="email" required placeholder="Email-Id" value={email} onChange={(e)=>setEmail(e.target.value)}/>
             <input type="text" required placeholder="Password" value={password} onChange={(e)=>setPassword(e.target.value)}/>
          </div>
-
-         {<p className='error-message'>{err}</p>}
          
          <div className="log-btn">
             <button className="lbtn" type="submit">Login</button>

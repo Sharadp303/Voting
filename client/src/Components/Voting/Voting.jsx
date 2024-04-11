@@ -1,6 +1,6 @@
 import React, { useEffect,useState } from 'react';
 import {useCookies} from 'react-cookie';
-import {useNavigate} from 'react-router-dom'
+import {useNavigate,Link} from 'react-router-dom'
 import './Voting.css'
 import axios from 'axios';
 
@@ -58,7 +58,13 @@ const Voting = ()=>{
         <>
         <div className='v-container'>
 
-        {!isUserAdmin()?(
+        
+        
+        {setMesg==="Successfully voted" ?( <div style={{color:"green",fontSize:25}}>{mesg}</div>):(<div style={{color:"red",fontSize:25}} >{mesg}</div>)}
+        
+        
+        {
+        !isUserAdmin()?(
             <form onSubmit={handleSubmit}>
             {data?.map((item)=>{
                 return (
@@ -72,22 +78,18 @@ const Voting = ()=>{
                     </>
                 )
                 })}
-            <button className='v-submit' type='submit'>Vote</button>
+            <button className='v-submit' type='submit'>VOTE</button>
         </form>
 
         ):(
             <div>
           {data?.map((item) => (
             <div className='v-c' key={item._id}>
-              <p>{item.candidateName}: {item.votes.length} votes</p>
+              <p>{item.candidateName}: <Link to={{pathname:"/v",state:{candidateNam:"sharad"}}}>{item.votes.length} Votes</Link>  </p>            
             </div>
-          ))}
+           ))}          
         </div>
         )}
-        
-        
-        
-            <div className='v-msg'>{mesg}</div>
             <button className="v-logout" onClick={Logout}>LOGOUT</button>
         </div>
         </>
